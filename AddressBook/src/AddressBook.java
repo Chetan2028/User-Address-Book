@@ -1,4 +1,10 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class AddressBook {
@@ -58,6 +64,52 @@ public class AddressBook {
 			 }
 		 }
 	 } 
-}
-
+	
+	 public void savePersons() {
+		 try {
+			 	PersonInfo p;
+			 	String line;
+			 	FileWriter fw = new FileWriter("persons.txt");
+			 	PrintWriter pw = new PrintWriter(fw);
+			 	for(int i=0; i<persons.size(); i++)
+			 	{
+			 		p = (PersonInfo)persons.get(i);
+			 		line = p.firstName +"  "+ p.lastName +"  "+ p.phoneNumber + "  " + p.city + "  " + p.zip;
+			 		// writes line to file (persons.txt)
+			 		pw.println(line);
+			 	}
+			 	pw.flush();
+			 	pw.close();
+			 	fw.close();
+			 	}catch(IOException ioEx){
+			 		System.out.println(ioEx);
+			 }
+	}
+	 
+	 public void loadPersons ( ){
+		 String tokens[] = null;
+		 String firstName,lastName, zip, phoneNumber,city;
+		 try {
+			 FileReader fr = new FileReader("persons.txt");
+			 BufferedReader br = new BufferedReader(fr);
+			 String line = br.readLine();
+			 while ( line != null ) {
+				 tokens = line.split("  ");
+				 firstName = tokens[0];
+				 lastName = tokens[1];
+				 phoneNumber = tokens[2];
+				 city = tokens[3];
+				 zip = tokens[4];
+				 PersonInfo p = new PersonInfo(firstName, lastName, phoneNumber,city,zip);
+				 persons.add(p);
+				 line = br.readLine();
+		 }
+		 br.close();
+		 fr.close();
+		 }catch(IOException ioEx){
+		 System.out.println(ioEx);
+		 }
+		 }
+ }
+	
 

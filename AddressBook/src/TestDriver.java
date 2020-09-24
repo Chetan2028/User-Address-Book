@@ -1,4 +1,5 @@
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TestDriver {
@@ -12,7 +13,7 @@ public class TestDriver {
 		
 		while(true) {
 			Scanner scan = new Scanner(System.in);
-			System.out.println("Enter 1 to add \n" + "Enter 2 to search \n" + "Enter 3 to delete \n"  + "ENter 4 to view" + "\nEnter 5 to quit \n" );
+			System.out.println("Enter 1 to add \n" + "Enter 2 to search \n" + "Enter 3 to delete \n"  + "ENter 4 to view" + "\nEnter 5 to Load the data \n" + "Enter 6 to Save the data \n" + "Enter 7 to quit" );
 			input = scan.nextLine();
 			ch = Integer.parseInt(input);
 			
@@ -37,9 +38,18 @@ public class TestDriver {
 			case 4 :
 				System.out.println("Printing the data : " );
 				ab.view();
-				
+				break;
+			
+			case 5 :
+				System.out.println("Load the data");
+				ab.loadPersons();
 				break;
 				
+			case 6 :
+				System.out.println("Saving the data : ");
+				ab.savePersons();
+				break;
+			
 			default : 
 				System.exit(0);
 			}
