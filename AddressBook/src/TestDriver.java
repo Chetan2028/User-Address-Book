@@ -1,3 +1,4 @@
+
 import java.util.Scanner;
 
 public class TestDriver {
@@ -11,7 +12,7 @@ public class TestDriver {
 		
 		while(true) {
 			Scanner scan = new Scanner(System.in);
-			System.out.println("Enter 1 to add \n" + "Enter 2 to search \n" + "Enter 3 to delete \n"  + "ENter 4 to exit");
+			System.out.println("Enter 1 to add \n" + "Enter 2 to search \n" + "Enter 3 to delete \n"  + "ENter 4 to view" + "\nEnter 5 to quit \n" );
 			input = scan.nextLine();
 			ch = Integer.parseInt(input);
 			
@@ -31,6 +32,12 @@ public class TestDriver {
 				System.out.println("Enter the name to delete");
 				s = scan.nextLine();
 				ab.deletePerson(s);
+				break;
+			
+			case 4 :
+				System.out.println("Printing the data : " );
+				ab.view();
+				
 				break;
 				
 			default : 
